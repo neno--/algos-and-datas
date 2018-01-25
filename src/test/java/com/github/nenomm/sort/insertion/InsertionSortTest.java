@@ -5,19 +5,56 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
+import static com.github.nenomm.sort.SortTestDataProvider.TestType.INTEGER_LIST;
+import static com.github.nenomm.sort.SortTestDataProvider.TestType.INT_ARRAY;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 
 public class InsertionSortTest extends SortTestDataProvider {
 	private static Logger log = LoggerFactory.getLogger(InsertionSortTest.class);
 
 	@Test
-	public void testSomeLibraryMethod() {
-		log.info("Presort: {}", inputArray);
-		InsertionSort.sort(inputArray);
-		log.info("Postsort: {}", inputArray);
-		assertArrayEquals(expectedResult, inputArray);
+	public void testForInts() {
+		if (testType == INT_ARRAY) {
+			log.info("Presort: {}", inputArray);
+			InsertionSort.sort((int[]) inputArray);
+			log.info("Postsort: {}", inputArray);
+			assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
+		}
 
+		if (testType == INTEGER_LIST) {
+			log.info("Presort: {}", inputArray);
+			List<Integer> result = InsertionSort.sort((List<Integer>) inputArray);
+			log.info("Postsort: {}", result);
+			assertEquals(expectedResult, result);
+		}
+
+		//assertThat(numbers, contains(expected));
+	}
+
+	@Test
+	public void testForList() {
+		if (testType == INTEGER_LIST) {
+			log.info("Presort: {}", inputArray);
+			List<Integer> result = InsertionSort.sort((List<Integer>) inputArray);
+			log.info("Postsort: {}", result);
+			assertEquals(expectedResult, result);
+		}
+
+		//assertThat(numbers, contains(expected));
+	}
+
+	@Test
+	public void testForListImproved() {
+		if (testType == INTEGER_LIST) {
+			log.info("Presort: {}", inputArray);
+			List<Integer> result = InsertionSort.sortImproved((List<Integer>) inputArray);
+			log.info("Postsort: {}", result);
+			assertEquals(expectedResult, result);
+		}
 
 		//assertThat(numbers, contains(expected));
 	}
