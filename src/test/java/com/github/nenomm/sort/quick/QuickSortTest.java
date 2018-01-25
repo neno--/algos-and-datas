@@ -1,15 +1,19 @@
 package com.github.nenomm.sort.quick;
 
 import com.github.nenomm.sort.SortTestDataProvider;
+import com.github.nenomm.sort.insertion.InsertionSort;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
+import static com.github.nenomm.sort.SortTestDataProvider.TestType.INTEGER_LIST;
 import static com.github.nenomm.sort.SortTestDataProvider.TestType.INT_ARRAY;
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 
 public class QuickSortTest extends SortTestDataProvider {
@@ -22,6 +26,16 @@ public class QuickSortTest extends SortTestDataProvider {
 			QuickSort.sort((int[]) inputArray);
 			log.info("Postsort: {}", inputArray);
 			assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
+		}
+	}
+
+	@Test
+	public void testForList() {
+		if (testType == INTEGER_LIST) {
+			log.info("Presort: {}", inputArray);
+			List<Integer> result = QuickSort.sort((List<Integer>) inputArray);
+			log.info("Postsort: {}", result);
+			assertEquals(expectedResult, result);
 		}
 	}
 

@@ -1,5 +1,9 @@
 package com.github.nenomm.sort.quick;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 public class QuickSort {
 	public static void sort(int[] array) {
 		if (array == null) {
@@ -51,5 +55,40 @@ public class QuickSort {
 		for (int i = 0; i <= sourceEndIndex; i++) {
 			destination[destinationBeginIndex + i] = source[i];
 		}
+	}
+
+	public static List<Integer> sort(List<Integer> source) {
+		if (source == null) {
+			return null;
+		} else if (source.size() < 2) {
+			return new ArrayList<>(source);
+		}
+
+		List<Integer> left = new ArrayList<>(source.size() - 1);
+		List<Integer> right = new ArrayList<>(source.size() - 1);
+
+		Integer pivot = source.get(source.size() / 2);
+		Iterator it = source.iterator();
+
+		for (int i = 0; it.hasNext(); i++) {
+			Integer element = (Integer) it.next();
+			if (i == source.size() / 2) {
+				continue;
+			}
+
+			if (pivot.compareTo(element) < 0) {
+				right.add(element);
+			} else {
+				left.add(element);
+			}
+		}
+
+		left = sort(left);
+		right = sort(right);
+
+		left.add(pivot);
+		left.addAll(right);
+
+		return left;
 	}
 }
