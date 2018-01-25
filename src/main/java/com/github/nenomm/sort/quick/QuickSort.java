@@ -2,34 +2,43 @@ package com.github.nenomm.sort.quick;
 
 public class QuickSort {
 	public static void sort(int[] array) {
-		int pivot, pivotIndex, leftArray[], rightArray[], leftIndex = 0, rightIndex = 0;
+		if (array == null) {
+			return;
+		}
+		sort(array, array.length);
+	}
 
-		if ((array == null) || array.length <= 1) {
+	private static void sort(int[] array, int size) {
+		int pivot, pivotIndex, leftArray[], rightArray[], nextLeftIndex = 0, nextRightIndex = 0;
+
+		if (size <= 1) {
 			return;
 		}
 
 		// this is an overstatement, but it is easiest way to do it.
-		leftArray = new int[array.length];
-		rightArray = new int[array.length];
+		leftArray = new int[size - 1];
+		rightArray = new int[size - 1];
 
-		pivotIndex = array.length / 2;
+		pivotIndex = size / 2;
 		pivot = array[pivotIndex];
 
 
-		for (int i = 0; i < array.length; i++) {
+		for (int i = 0; i < size; i++) {
+			if (i == pivotIndex) continue;
+
 			if (array[i] < pivot) {
-				leftArray[leftIndex++] = array[i];
+				leftArray[nextLeftIndex++] = array[i];
 			} else {
-				rightArray[rightIndex++] = array[i];
+				rightArray[nextRightIndex++] = array[i];
 			}
 		}
 
-		sort(leftArray);
-		sort(rightArray);
+		sort(leftArray, nextLeftIndex);
+		sort(rightArray, nextRightIndex);
 
-		combine(leftArray, array, 0, leftIndex);
-		array[leftArray.length] = pivot;
-		combine(rightArray, array, leftArray.length + 1, rightIndex);
+		combine(leftArray, array, 0, nextLeftIndex - 1);
+		array[nextLeftIndex] = pivot;
+		combine(rightArray, array, nextLeftIndex + 1, nextRightIndex - 1);
 	}
 
 	/**
