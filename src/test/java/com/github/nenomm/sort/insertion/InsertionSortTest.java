@@ -31,8 +31,6 @@ public class InsertionSortTest extends SortTestDataProvider {
 			log.info("Postsort: {}", result);
 			assertEquals(expectedResult, result);
 		}
-
-		//assertThat(numbers, contains(expected));
 	}
 
 	@Test
@@ -43,8 +41,6 @@ public class InsertionSortTest extends SortTestDataProvider {
 			log.info("Postsort: {}", result);
 			assertEquals(expectedResult, result);
 		}
-
-		//assertThat(numbers, contains(expected));
 	}
 
 	@Test
@@ -55,7 +51,5 @@ public class InsertionSortTest extends SortTestDataProvider {
 			log.info("Postsort: {}", result);
 			assertEquals(expectedResult, result);
 		}
-
-		//assertThat(numbers, contains(expected));
 	}
 }

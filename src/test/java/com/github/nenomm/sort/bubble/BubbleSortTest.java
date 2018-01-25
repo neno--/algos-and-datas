@@ -13,8 +13,6 @@ public class BubbleSortTest extends SortTestDataProvider {
 		if (testType == INT_ARRAY) {
 			BubbleSort.sort((int[]) inputArray);
 			assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
-
-			//assertThat(numbers, contains(expected));
 		}
 	}
 }
