@@ -47,7 +47,7 @@ public class QuickSort {
 	 *                              <p>
 	 *                              assumes source and destination are of same size.
 	 */
-	public static void combine(int[] source, int[] destination, int destinationBeginIndex, int sourceEndIndex) {
+	private static void combine(int[] source, int[] destination, int destinationBeginIndex, int sourceEndIndex) {
 		for (int i = 0; i <= sourceEndIndex; i++) {
 			destination[destinationBeginIndex + i] = source[i];
 		}
