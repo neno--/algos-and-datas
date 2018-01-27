@@ -24,13 +24,6 @@ public class InsertionSortTest extends SortTestDataProvider {
 			log.info("Postsort: {}", inputArray);
 			assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
 		}
-
-		if (testType == INTEGER_LIST) {
-			log.info("Presort: {}", inputArray);
-			List<Integer> result = InsertionSort.sort((List<Integer>) inputArray);
-			log.info("Postsort: {}", result);
-			assertEquals(expectedResult, result);
-		}
 	}
 
 	@Test

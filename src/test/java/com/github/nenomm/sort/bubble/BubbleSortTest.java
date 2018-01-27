@@ -9,7 +9,7 @@ import static org.junit.Assert.assertArrayEquals;
 
 public class BubbleSortTest extends SortTestDataProvider {
 	@Test
-	public void testSomeLibraryMethod() {
+	public void testForInts() {
 		if (testType == INT_ARRAY) {
 			BubbleSort.sort((int[]) inputArray);
 			assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
