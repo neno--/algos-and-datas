@@ -51,4 +51,10 @@ public class BinarySearchTest {
 		log.info("Array: {}, element: {}, expected result: {}", array, element, expectedResult);
 		assertEquals(expectedResult, BinarySearch.search(array, element));
 	}
+
+	@Test
+	public void testRecursiveIntSearch() {
+		log.info("Array: {}, element: {}, expected result: {}", array, element, expectedResult);
+		assertEquals(expectedResult, BinarySearch.recursiveIntSearch(array, element));
+	}
 }
