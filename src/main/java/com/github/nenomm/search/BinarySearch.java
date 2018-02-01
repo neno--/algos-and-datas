@@ -6,30 +6,33 @@ import org.slf4j.LoggerFactory;
 public class BinarySearch {
 	private static Logger log = LoggerFactory.getLogger(BinarySearch.class);
 
-	public static boolean search(int[] array, int e) {
+	public static boolean intSearch(int[] array, int element) {
 		if ((array == null) || (array.length == 0)) {
 			return false;
 		}
 
-		int i = 1, j = 0, previous;
-		j = array.length / 2 * i;
+		int startIndex = 0, endIndex = array.length - 1;
+		int middleIndex;
 
+		while (true) {
+			middleIndex = (startIndex + endIndex) / 2;
 
-		do {
-			i++;
-			previous = j;
-			log.info("Index {}, value {}", j, array[j]);
-			if (array[j] < e) {
-				j = j + (array.length / (2 * i));
-				log.info("go right, next index: {}, i: {}", j, i);
-			} else if (array[j] > e) {
-				j = j - (array.length / (2 * i));
-				log.info("go left, next index: {}, i: {}", j, i);
-			} else {
+			if (array[middleIndex] == element) {
 				return true;
 			}
-		} while (previous != j);
-		return false;
+
+			if (startIndex == endIndex) {
+				return false;
+			}
+
+			if (array[middleIndex] < element) {
+				startIndex = middleIndex + 1;
+				log.info("go right, start index: {}, end index: {}", startIndex, endIndex);
+			} else {
+				endIndex = middleIndex;
+				log.info("go left, start index: {}, end index: {}", startIndex, endIndex);
+			}
+		}
 	}
 
 	public static boolean recursiveIntSearch(int[] array, int element) {
@@ -40,6 +43,13 @@ public class BinarySearch {
 		return recursiveIntSearch(array, element, 0, array.length - 1);
 	}
 
+	/**
+	 * @param array
+	 * @param element
+	 * @param startIndex - inclusive
+	 * @param endIndex   - inclusive
+	 * @return whether element is in the array or not
+	 */
 	private static boolean recursiveIntSearch(int[] array, int element, int startIndex, int endIndex) {
 		// middle index may be equal to startIndex, but it can never be equal to endIndex
 		int middleIndex = (startIndex + endIndex) / 2;

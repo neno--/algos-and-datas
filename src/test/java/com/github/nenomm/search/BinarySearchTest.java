@@ -46,10 +46,10 @@ public class BinarySearchTest {
 	@Parameterized.Parameter(2)
 	public boolean expectedResult;
 
-	@Test
-	public void testBinarySearchForInts() {
+	@Test(timeout = 5000)
+	public void testIntSearch() {
 		log.info("Array: {}, element: {}, expected result: {}", array, element, expectedResult);
-		assertEquals(expectedResult, BinarySearch.search(array, element));
+		assertEquals(expectedResult, BinarySearch.intSearch(array, element));
 	}
 
 	@Test
