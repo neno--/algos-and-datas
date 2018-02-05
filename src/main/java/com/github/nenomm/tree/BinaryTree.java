@@ -69,6 +69,19 @@ public class BinaryTree<T extends Comparable> {
 		public T getValue() {
 			return element;
 		}
+
+		private int getDepth(int currentMax, int currentLevel) {
+			int localLeftMax = currentMax, localRightMax = currentMax;
+			if (this.hasLeft()) {
+				localLeftMax = this.getLeft().getDepth((currentMax > (currentLevel + 1)) ? currentMax : currentLevel + 1, currentLevel + 1);
+			}
+
+			if (this.hasRight()) {
+				localRightMax = this.getRight().getDepth((currentMax > (currentLevel + 1)) ? currentMax : currentLevel + 1, currentLevel + 1);
+			}
+
+			return (localLeftMax > localRightMax) ? localLeftMax : localRightMax;
+		}
 	}
 
 	public void insert(T element) {
@@ -97,5 +110,12 @@ public class BinaryTree<T extends Comparable> {
 
 	public TreeNode getRoot() {
 		return root;
+	}
+
+	public int getDepth() {
+		if (root == null) {
+			return 0;
+		}
+		return root.getDepth(0, 0) + 1;
 	}
 }
