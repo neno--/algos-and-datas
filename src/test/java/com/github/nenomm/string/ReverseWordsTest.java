@@ -40,4 +40,9 @@ public class ReverseWordsTest {
 	public void test7() {
 		assertEquals("a ", ReverseWords.reverseWords(" a"));
 	}
+
+	@Test
+	public void test8() {
+		assertEquals("Hello, how are you?", ReverseWords.reverseWords("you? are how Hello,"));
+	}
 }
