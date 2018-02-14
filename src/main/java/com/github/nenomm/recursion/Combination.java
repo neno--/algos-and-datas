@@ -53,4 +53,33 @@ public class Combination {
 			return temp;
 		}
 	}
+
+	public static void hardRecursive(String source) {
+		hardRecursiveInternal(source, new char[source.length()], 0);
+	}
+
+	public static void hardRecursiveInternal(String source, char[] result, int position) {
+		for (int i = position; i < source.length(); i++) {
+			if (i == position) {
+				continue;
+			}
+			result[position] = source.charAt(i);
+			System.out.println(new String(result, 0, position + 1));
+			hardRecursiveInternal(source, result, position + 1);
+		}
+	}
+
+	public static void recursiveChemistry(String source, char[] result, int position) {
+		if (position == (source.length() - 1)) {
+			result[position] = source.charAt(position);
+			System.out.println(new String(result, position, 1));
+		} else {
+			recursiveChemistry(source, result, position + 1);
+			System.out.println(source.charAt(position));
+			result[position] = source.charAt(position);
+			for (int i = 0; i < (source.length() - position); i++) {
+				//System.out.println(source.charAt(position) + );
+			}
+		}
+	}
 }
