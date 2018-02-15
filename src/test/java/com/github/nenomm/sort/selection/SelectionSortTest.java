@@ -13,7 +13,7 @@ public class SelectionSortTest extends SortTestDataProvider {
 	private static Logger log = LoggerFactory.getLogger(SelectionSortTest.class);
 
 	@Test
-	public void testSortForInts() {
+	public void testSortForIntsIterative() {
 		if (testType == INT_ARRAY) {
 			log.info("Presort: {}", inputArray);
 			SelectionSort.iterative((int[]) inputArray);
@@ -23,7 +23,7 @@ public class SelectionSortTest extends SortTestDataProvider {
 	}
 
 	@Test
-	public void testSortForIntsOnExample() {
+	public void testSortForIntsOnExampleIterative() {
 		int[] inputArray = {4, 3, 2, 1, -1};
 		int[] expectedResult = {-1, 1, 2, 3, 4};
 
@@ -31,5 +31,36 @@ public class SelectionSortTest extends SortTestDataProvider {
 		SelectionSort.iterative((int[]) inputArray);
 		log.info("Postsort: {}", inputArray);
 		assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
+	}
+
+	@Test
+	public void testSortForIntsRecursive() {
+		if (testType == INT_ARRAY) {
+			log.info("Presort: {}", inputArray);
+			SelectionSort.recursive((int[]) inputArray);
+			log.info("Postsort: {}", inputArray);
+			assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
+		}
+	}
+
+	@Test
+	public void testSortForIntsOnExampleRecursive() {
+		int[] inputArray = {10, -1, 0, 5, 22};
+		int[] expectedResult = {-1, 0, 5, 10, 22};
+
+		log.info("Presort: {}", inputArray);
+		SelectionSort.recursive((int[]) inputArray);
+		log.info("Postsort: {}", inputArray);
+		assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
+	}
+
+	@Test
+	public void testSortForIntsRecursiveHardcore() {
+		if (testType == INT_ARRAY) {
+			log.info("Presort: {}", inputArray);
+			SelectionSort.recursiveHardcore((int[]) inputArray);
+			log.info("Postsort: {}", inputArray);
+			assertArrayEquals((int[]) expectedResult, (int[]) inputArray);
+		}
 	}
 }
